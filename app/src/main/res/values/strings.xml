@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">EditOrderApp</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- ログイン画面用文字列 -->
+    <string name="login_email_hint">メールアドレス</string>
+    <string name="login_pass_hint">パスワード（6文字以上）</string>
+    <string name="login_name_hint">表示名</string>
+    <string name="login_createbutton_text">アカウント作成</string>
+
+    <string name="login_title">ログイン</string>
+    <string name="create_account_failure_message">アカウント作成に失敗しました</string>
+    <string name="login_failure_message">ログインに失敗しました</string>
+    <string name="login_error_message">正しく入力してください</string>
+
+    <!-- ダイアログ用文字列 -->
+    <string name="dialog_positive">OK</string>
+    <string name="dialog_negative">cancel</string>
+
+    <!-- カテゴリー追加ダイアログ用文字列 -->
+    <string name="category_add_title">カテゴリーを追加</string>
+    <string name="category_add_message">カテゴリーの表示名を入力してください</string>
+    <string name="category_add_hint">例）定食</string>
+
+    <!-- カテゴリー削除/編集ダイアログ用文字列 -->
+    <string name="category_change_title">カテゴリーを編集</string>
+    <string name="category_remove">削除</string>
+
+    <!-- メニュー追加用文字列 -->
+    <string name="menu_add_title">メニューを追加</string>
+    <string name="menu_add_message">カテゴリーの表示名を入力してください</string>
+    <string name="menu_add_hint">例）唐揚げ定食</string>
+
+    <!-- 店舗名入力時のダイアログ用文字列 -->
+    <string name="store_name_input_title">店舗名</string>
+    <string name="store_name_input_message">店舗名を入力してください</string>
+    <string name="store_name_input_hint">例）定食屋　春日</string>
+
+    <!-- 設定画面用文字列 -->
+    <string name="settings_title">設定</string>
+    <string name="menu_logout_label">ログアウト</string>
+    <string name="menu_change_store_name">変更</string>
+    <string name="no_login_user">ログインしていません</string>
+    <string name="change_disp_name">表示名を変更しました</string>
+    <string name="logout_complete_message">ログアウトしました</string>
+
+    <!-- メニュー追加用画面  -->
+    <string name="menu_name_label" >メニュー名</string>
+    <string name="menu_price_label" >価格</string>
+    <string name="menu_image_label" >イメージ画像</string>
+    <string name="menu_explain_label" >メッセージ</string>
+    <string name="get_image" > 画像を取得</string>
+    <string name="input_menu_name" >メニュー名を入力してください</string>
+    <string name="input_menu_price" >価格を入力してください</string>
+
+</resources>
