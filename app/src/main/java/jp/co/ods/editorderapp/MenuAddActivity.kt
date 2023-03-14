@@ -48,7 +48,7 @@ class MenuAddActivity : AppCompatActivity() {
         val extras = intent.extras
         mCategoryKey = extras!!.get("categoryKey") as String
         mCategoryName = extras.get("categoryName") as String
-        val mMenu = extras.get("menu") as Menu
+        mMenu = extras.get("menu") as Menu
 
         //UI設定
         title = "$storeName > $mCategoryName > ${mMenu.name}"
