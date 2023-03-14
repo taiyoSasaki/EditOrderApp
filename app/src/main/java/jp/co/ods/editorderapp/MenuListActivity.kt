@@ -3,7 +3,10 @@ package jp.co.ods.editorderapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.preference.PreferenceManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_menu_list.*
 import kotlinx.android.synthetic.main.content_main.listView
 
@@ -44,6 +47,27 @@ class MenuListActivity : AppCompatActivity() {
             finish()
         }
 
+        //アイテムを長押ししたとき
+        listView.setOnItemLongClickListener { parent, view, position, id ->
+            //メニュー削除メソッド
+            //ダイアログを表示する
+            val builder = AlertDialog.Builder(this)
+                .setTitle(getString(R.string.menu_remove))
+                .setMessage(getString(R.string.menu_remove_message))
+                .setPositiveButton(getString(R.string.menu_remove)) { _, _ ->
+                    val user = FirebaseAuth.getInstance().currentUser
+                    val dataBaseReference = FirebaseDatabase.getInstance().reference
+                    val menuRef = dataBaseReference.child(user!!.uid).child(mCategory.key).child(MenuPath)
+                    val menuKey = mCategory.menuList[position].key
+                    menuRef.child(menuKey).setValue(null)
+                    finish()
+                }
+                .setNegativeButton(getString(R.string.menu_cancel_remove), null)
+            builder.create()
+            builder.show()
+            true
+        }
+
         //プラスボタンを押したとき
         fab.setOnClickListener { _ ->
             val intent = Intent(applicationContext, MenuAddActivity::class.java)
@@ -58,8 +82,6 @@ class MenuListActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
-
         mAdapter.notifyDataSetChanged()
     }
 }

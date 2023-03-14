@@ -36,8 +36,13 @@
 
     <!-- メニュー追加用文字列 -->
     <string name="menu_add_title">メニューを追加</string>
-    <string name="menu_add_message">カテゴリーの表示名を入力してください</string>
     <string name="menu_add_hint">例）唐揚げ定食</string>
+
+    <!-- メニュー削除ダイアログ用文字列 -->
+    <string name="menu_remove_title">メニューを削除</string>
+    <string name="menu_remove_message">このメニューを削除しますか？</string>
+    <string name="menu_remove">削除</string>
+    <string name="menu_cancel_remove">キャンセル</string>
 
     <!-- 店舗名入力時のダイアログ用文字列 -->
     <string name="store_name_input_title">店舗名</string>

@@ -140,8 +140,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-
-
     }
 
     override fun onResume() {
