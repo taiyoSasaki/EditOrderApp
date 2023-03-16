@@ -169,6 +169,9 @@ class LoginActivity : AppCompatActivity() {
             .setMessage(getString(R.string.store_name_input_message))
             .setView(dialogLayout)
             .setPositiveButton(getString(R.string.dialog_positive)) { _, _ ->
+                // キーボードが出てたら閉じる
+                val im = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                im.hideSoftInputFromWindow(v.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
                 //OKボタンを押したとき
                 name = editText.text.toString()
 
