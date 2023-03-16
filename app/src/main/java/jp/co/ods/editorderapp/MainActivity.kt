@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mAdapter: CategoryListAdapter
 
     private var mStoreRef: DatabaseReference? = null
+    private var mCategoryRef: DatabaseReference? = null
 
     private val mEventListener = object :ChildEventListener {
         override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
@@ -115,8 +116,8 @@ class MainActivity : AppCompatActivity() {
         mAdapter.notifyDataSetChanged()
 
         listView.setOnItemClickListener {parent, view, position, id ->
-            if (mStoreRef != null) {
-                mStoreRef!!.removeEventListener(mEventListener)
+            if (mCategoryRef != null) {
+                mCategoryRef!!.removeEventListener(mEventListener)
             }
 
             //Categoryを渡してメニュー一覧画面を起動する
@@ -156,12 +157,12 @@ class MainActivity : AppCompatActivity() {
             mAdapter.setCategoryList(mCategoryList)
             listView.adapter = mAdapter
 
-            //ログインしている店の階層にリスナー登録
-            if (mStoreRef != null) {
-                mStoreRef!!.removeEventListener(mEventListener)
+            //ログインしている店のカテゴリー階層にリスナー登録
+            if (mCategoryRef != null) {
+                mCategoryRef!!.removeEventListener(mEventListener)
             }
-            mStoreRef = mDatabaseReference.child(user.uid)
-            mStoreRef!!.addChildEventListener(mEventListener)
+            mCategoryRef = mDatabaseReference.child(user.uid).child(CategoryPath)
+            mCategoryRef!!.addChildEventListener(mEventListener)
         }
     }
 
@@ -198,7 +199,7 @@ class MainActivity : AppCompatActivity() {
                 //OKボタンを押したとき
                 val categoryString = editText.text.toString()
                 //Firebaseに保存
-                mStoreRef!!.push().setValue(mapOf("category" to categoryString))
+                mCategoryRef!!.push().setValue(mapOf("category" to categoryString))
             }
             .setNegativeButton(getString(R.string.dialog_negative), null)
             .create()
@@ -243,12 +244,12 @@ class MainActivity : AppCompatActivity() {
                 //OKボタンを押したとき
                 val categoryString = editText.text.toString()
                 //Firebaseに保存
-                mStoreRef!!.child(category.key).updateChildren(mapOf("category" to categoryString))
+                mCategoryRef!!.child(category.key).updateChildren(mapOf("category" to categoryString))
             }
             .setNegativeButton(getString(R.string.dialog_negative), null)
             .setNeutralButton(getString(R.string.category_remove)) { _, _ ->
                 //Firebaseに保存
-                mStoreRef!!.updateChildren(mapOf(category.key to null))
+                mCategoryRef!!.updateChildren(mapOf(category.key to null))
             }
             .create()
 

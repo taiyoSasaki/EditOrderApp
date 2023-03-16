@@ -86,7 +86,7 @@ class MenuAddActivity : AppCompatActivity() {
 
             val user = FirebaseAuth.getInstance().currentUser
             val dataBaseReference = FirebaseDatabase.getInstance().reference
-            val menuRef = dataBaseReference.child(user!!.uid).child(mCategoryKey).child(MenuPath)
+            val menuRef = dataBaseReference.child(user!!.uid).child(CategoryPath).child(mCategoryKey).child(MenuPath)
 
             var menuKey: String
             if (mMenu.key == "") {

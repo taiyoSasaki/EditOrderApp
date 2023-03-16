@@ -8,3 +8,6 @@ const val StoreNameKEY = "storeName"
 
 //Firebaseにメニューを保存するパス
 const val MenuPath = "menu"
+
+//Firebaseにカテゴリーを保存するパス
+const val CategoryPath = "category"

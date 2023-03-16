@@ -52,12 +52,12 @@ class MenuListActivity : AppCompatActivity() {
             //メニュー削除メソッド
             //ダイアログを表示する
             val builder = AlertDialog.Builder(this)
-                .setTitle(getString(R.string.menu_remove))
+                .setTitle(getString(R.string.menu_remove_title))
                 .setMessage(getString(R.string.menu_remove_message))
                 .setPositiveButton(getString(R.string.menu_remove)) { _, _ ->
                     val user = FirebaseAuth.getInstance().currentUser
                     val dataBaseReference = FirebaseDatabase.getInstance().reference
-                    val menuRef = dataBaseReference.child(user!!.uid).child(mCategory.key).child(MenuPath)
+                    val menuRef = dataBaseReference.child(user!!.uid).child(CategoryPath).child(mCategory.key).child(MenuPath)
                     val menuKey = mCategory.menuList[position].key
                     menuRef.child(menuKey).setValue(null)
                     finish()
