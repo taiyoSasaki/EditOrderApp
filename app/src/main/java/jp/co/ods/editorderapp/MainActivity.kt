@@ -138,14 +138,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
-        //preferenceから表示名を取得してタイトルに反映させる
-        val sp = PreferenceManager.getDefaultSharedPreferences(this)
-        val storeName = sp.getString(StoreNameKEY, "")
-
-        //UI設定
-        title = storeName
-
         // ログイン済みのユーザーを取得する
         val user = FirebaseAuth.getInstance().currentUser
         // ログインしていなければログイン画面に遷移させる
@@ -163,6 +155,13 @@ class MainActivity : AppCompatActivity() {
             }
             mCategoryRef = mDatabaseReference.child(user.uid).child(CategoryPath)
             mCategoryRef!!.addChildEventListener(mEventListener)
+
+            //preferenceから表示名を取得してタイトルに反映させる
+            val sp = PreferenceManager.getDefaultSharedPreferences(this)
+            val storeName = sp.getString(StoreNameKEY, "")
+
+            //UI設定
+            title = storeName
         }
     }
 
